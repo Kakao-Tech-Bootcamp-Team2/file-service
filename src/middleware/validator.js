@@ -18,11 +18,6 @@ exports.validateFileUpload = (req, res, next) => {
     errors.push('올바른 파일 크기가 필요합니다.');
   }
 
-  // 파일 크기 검증
-  if (size > upload.maxFileSize) {
-    errors.push(`파일 크기는 ${upload.maxFileSize / (1024 * 1024)}MB를 초과할 수 없습니다.`);
-  }
-
   // MIME 타입 검증
   const isAllowedType = Object.keys(upload.allowedMimeTypes).includes(mimetype);
   if (!isAllowedType) {

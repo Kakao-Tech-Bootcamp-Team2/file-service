@@ -18,7 +18,6 @@ module.exports = {
 
   // 파일 업로드 제한 설정
   upload: {
-    maxFileSize: parseInt(process.env.MAX_FILE_SIZE) || 1024 * 1024 * 5, // 기본 5MB
     allowedMimeTypes: {
       'image/jpeg': ['.jpg', '.jpeg'],
       'image/png': ['.png'],
