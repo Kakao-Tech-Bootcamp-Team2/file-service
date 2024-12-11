@@ -53,10 +53,10 @@ jobs:
             cd ~/file-service && \
             echo "${{ secrets.GITHUB_TOKEN }}" | sudo docker login ghcr.io -u ${{ github.actor }} --password-stdin && \
             git pull origin main && \
-            rm -rf ~/file-service/logs && \
-            rm -rf ~/file-service/uploads && \
-            mkdir -p ~/file-service/logs && \
-            mkdir -p ~/file-service/uploads && \
+            sudo rm -rf ~/file-service/logs && \
+            sudo rm -rf ~/file-service/uploads && \
+            sudo mkdir -p ~/file-service/logs && \
+            sudo mkdir -p ~/file-service/uploads && \
             sudo docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} && \
             sudo docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} file-service:latest && \
             sudo docker rm -f file-service && \
