@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # 프로덕션 의존성만 설치
-RUN npm ci --only=production
+RUN npm install --only=production
 
 # 소스 코드 복사
 COPY . .
