@@ -1,18 +1,14 @@
-name: Deploy File Service
+name: Deploy
+on: push
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'file-service/**'
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository }}/file-service:latest
 
 jobs:
-  deploy:
+  build:
+    name: Build Docker Image
     runs-on: ubuntu-latest
-    env:
-      IMAGE_NAME: ghcr.io/${{ github.repository }}/file-service:latest
-    
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -41,6 +37,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -i ~/.ssh/ec2.pem ubuntu@${{ secrets.FILE_SERVICE_HOST }} '
+            cd ~/file-service && \
             rm -rf ~/file-service/logs && \
             rm -rf ~/file-service/uploads && \
             mkdir -p ~/file-service/logs && \
