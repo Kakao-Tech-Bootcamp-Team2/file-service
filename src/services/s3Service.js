@@ -24,7 +24,7 @@ class S3Service {
 
     try {
       const uploadUrl = await this.s3.getSignedUrlPromise('putObject', params);
-      const downloadUrl = `https://${this.bucket}.s3.${awsConfig.region}.amazonaws.com/${key}`;
+      const downloadUrl = `https://${this.bucket}.s3-accelerate.amazonaws.com/${key}`;
       
       return {
         uploadUrl,
