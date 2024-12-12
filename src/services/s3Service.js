@@ -13,7 +13,7 @@ class S3Service {
    */
   async generatePresignedUrl(fileInfo) {
     const { mimetype, userId } = fileInfo;
-    const key = `${S3.UPLOAD_PATH}/${userId}/${uuidv4()}`;
+    const key = `${S3.UPLOAD_PATH}/${uuidv4()}`;
     
     const params = {
       Bucket: this.bucket,
