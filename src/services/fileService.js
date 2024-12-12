@@ -3,6 +3,7 @@ const s3Service = require('./s3Service');
 const redisClient = require('../config/redis');
 const { FileUploadInfo, FileMetadata } = require('../models/fileTypes');
 const { REDIS_KEYS, REDIS_TTL, UPLOAD_STATUS } = require('../config/constants');
+const { s3, awsConfig } = require('../config/aws');
 
 class FileService {
   /**
